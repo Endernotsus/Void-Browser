@@ -1,0 +1,629 @@
+
+/* ========================================
+   GLOBAL STYLES
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+#settingsBtn {
+    position: fixed;
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    top: 10px;
+    left: 10px;
+    right: auto;
+
+    margin: 0;
+    transform: none;
+
+    z-index: 1000;
+    cursor: pointer;
+}
+#addBtn {
+    position: fixed;
+    left: 95vw;
+    top: 95vh;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: #111318;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ========================================
+   HEADINGS
+======================================== */
+
+h1 {
+    margin: 20px 0 10px;
+    font-size: 36px;
+    text-align: center;
+}
+
+p {
+    margin: 0 0 25px;
+    color: #c5c5c5;
+    text-align: center;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#addBtn {
+    padding: 12px 22px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 8px;
+    background: #5865f2;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#addBtn:hover {
+    background: #4752c4;
+    transform: translateY(-2px);
+}
+
+/*#region Shortcuts */
+/* ========================================
+   SHORTCUT GRID
+======================================== */
+
+#shortcuts {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 25px;/*Gap between every shortcut added*/
+    align-items: start;
+}
+
+
+/* ========================================
+   SHORTCUT CARDS
+======================================== */
+
+.shortcut {
+    position: relative;
+    min-height: 115px;
+    padding: 18px 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(30, 33, 40, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+.shortcut:hover {
+    background: rgba(48, 52, 63, 0.95);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+
+/* ========================================
+   SHORTCUT ICONS
+======================================== */
+
+.shortcut-icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.shortcut img {
+    max-width: 100%;
+}
+
+.default-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+}
+
+
+/* ========================================
+   SHORTCUT LINKS
+======================================== */
+
+.shortcut a {
+    max-width: 100%;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.shortcut a:hover {
+    color: #8c96ff;
+}
+
+
+/* ========================================
+   DELETE BUTTON
+======================================== */
+
+.delete {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    width: 23px;
+    height: 23px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #e74c3c;
+    color: white;
+    font-size: 17px;
+    line-height: 23px;
+}
+
+.delete:hover {
+    background: #ff6252;
+    transform: scale(1.1);
+}
+
+
+/* ========================================
+   POPUP BACKGROUND
+======================================== */
+
+#popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ========================================
+   POPUP MODAL
+======================================== */
+
+.modal {
+    width: 100%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: #20232b;
+    color: white;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+/* ========================================
+   POPUP INPUTS
+======================================== */
+
+.modal input {
+    display: block;
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 12px;
+    border: 1px solid #444955;
+    border-radius: 7px;
+    outline: none;
+    background: #14161c;
+    color: white;
+    font-size: 14px;
+}
+
+.modal input:focus {
+    border-color: #5865f2;
+}
+
+.modal input::placeholder {
+    color: #9298a5;
+}
+
+.modal input[type="file"] {
+    cursor: pointer;
+}
+
+.modal input[type="file"]::file-selector-button {
+    margin-right: 10px;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 5px;
+    background: #5865f2;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   IMAGE PREVIEW
+======================================== */
+
+#imagePreview {
+    min-height: 0;
+    margin: 10px 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagePreview img {
+    display: block;
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    border: 1px solid #444955;
+    border-radius: 10px;
+    background: #14161c;
+    object-fit: contain;
+}
+
+
+/* ========================================
+   POPUP BUTTONS
+======================================== */
+
+.modal button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#saveBtn {
+    background: #5865f2;
+}
+
+#saveBtn:hover {
+    background: #4752c4;
+}
+
+#cancelBtn {
+    margin-left: 8px;
+    background: #454954;
+}
+
+#cancelBtn:hover {
+    background: #5b606d;
+}
+
+
+/* ========================================
+   POSITION ELEMENTS
+======================================== */
+.position {
+    display: flex;
+    gap: 10px;
+}
+/*#endregion*/
+/*#region Debug */ 
+/* ========================================
+   DEBUG MENU
+======================================== */
+
+#debugMenu {
+    position:fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 2000;
+    width: 320px;
+    max-width: calc(100vw - 30px);
+    overflow: hidden;
+    border: 1px solid #414652;
+    border-radius: 10px;
+    background: rgba(20, 22, 28, 0.97);
+    color: white;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ========================================
+   DEBUG HEADER
+======================================== */
+
+#debugHeader {
+    min-height: 42px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #292e39;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#debugToggle {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    background: #5865f2;
+    color: white;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+#debugToggle:hover {
+    background: #4752c4;
+}
+
+
+/* ========================================
+   DEBUG CONTENT
+======================================== */
+
+#debugContent {
+    padding: 10px;
+}
+
+#debugLogs {
+    height: 150px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+.debugLog {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #c5c5c5;
+}
+
+.debugLog.success {
+    color: #55d98a;
+}
+
+.debugLog.warning {
+    color: #f4c45e;
+}
+
+.debugLog.error {
+    color: #ff6868;
+}
+
+
+/* ========================================
+   CLEAR LOGS BUTTON
+======================================== */
+
+#clearLogs {
+    width: 100%;
+    margin-top: 8px;
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    background: #454954;
+    color: white;
+    font-size: 12px;
+}
+
+#clearLogs:hover {
+    background: #5b606d;
+}
+
+
+/* ========================================
+   COLLAPSED DEBUG MENU
+======================================== */
+
+#debugMenu.collapsed #debugContent {
+    display: none;
+}
+
+
+/* ========================================
+   SCROLLBARS
+======================================== */
+
+#debugLogs::-webkit-scrollbar,
+.modal::-webkit-scrollbar {
+    width: 6px;
+}
+
+#debugLogs::-webkit-scrollbar-thumb,
+.modal::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #5865f2;
+}
+/*#endregion*/
+
+/*#region Mobile*/
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 12px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    #shortcuts {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 12px;
+    }
+
+    .shortcut {
+        min-height: 105px;
+        padding: 15px 7px 10px;
+    }
+
+    #debugMenu {
+        right: 10px;
+        bottom: 10px;
+        width: 280px;
+    }
+
+}
+/*#endregion */
+/* ========================================
+   VOID BACKGROUND SLIDESHOW
+======================================== */
+
+.void-bg-layer {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+    transition: opacity 2.5s ease-in-out;
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Keep page content above background */
+body {
+    isolation: isolate;
+}
+/* ==========================================
+   VOID BACKGROUND SLIDESHOW
+========================================== */
+
+/* Keep background layers behind page content */
+body {
+    isolation: isolate;
+}
+
+/* Visible background */
+.void-bg-layer.active {
+    opacity: 1;
+}
+
+/* Smooth background transitions */
+.void-bg-layer,
+.void-bg-layer.active {
+    will-change: opacity;
+}
+#midImg {
+    position: fixed;
+
+    /* Center on the screen */
+    top: 40%;
+    left: 50%;
+    translate: -50% -50%;
+
+    /* Image size */
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+
+    /* Appearance */
+    display: block;
+    margin: 0;
+    padding: 0;
+
+    /* Rotation settings */
+    transform-origin: center center;
+
+    /* Layering */
+    z-index: 1;
+
+    /* Prevent interaction */
+    pointer-events: none;
+}
+
+/* ==========================================
+   DEFAULT IMAGE ANIMATION
+========================================== */
+
+#midImg.default-mid-animation {
+    animation: defaultMidSpin 4s linear infinite;
+}
+
+@keyframes defaultMidSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(90deg);
+    }
+
+    75% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    #midImg.default-mid-animation {
+        animation: none;
+    }
+}
+#clock{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    translate: -50% -50%;
+    color: #8c96ff;
+    font-size: 100px;
+    font-weight: bold;
+
+
+}
