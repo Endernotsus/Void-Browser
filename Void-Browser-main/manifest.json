@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Void",
+  "version": "1.0.0",
+  "description": "A customizable personal browser interface with backgrounds, shortcuts, and settings.",
+  "permissions": [
+    "unlimitedStorage"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "Home/newtab.html"
+  },
+  "icons": {
+    "16": "defaltIcons/defaltIcon.png",
+    "32": "defaltIcons/defaltIcon.png",
+    "48": "defaltIcons/defaltIcon.png",
+    "128": "defaltIcons/defaltIcon.png"
+  },
+  "action": {
+    "default_title": "Void",
+    "default_icon": {
+      "16": "defaltIcons/defaltIcon.png",
+      "32": "defaltIcons/defaltIcon.png",
+      "48": "defaltIcons/defaltIcon.png",
+      "128": "defaltIcons/defaltIcon.png"
+    }
+  }
+}

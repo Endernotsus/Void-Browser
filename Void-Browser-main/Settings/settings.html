@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Void | Settings</title>
+
+    <link id="voidSettingsFavicon" rel="icon" type="image/png" href="../defaltIcons/defaltIcon.png">
+    <link rel="stylesheet" href="settings.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <span class="brand-icon">◈</span>
+            <span>VOID</span>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="../Home/newtab.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                <span>Home</span>
+            </a>
+
+            <a href="#appearance" class="nav-link active">
+                <span class="nav-icon">◐</span>
+                <span>Appearance</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>VOID SETTINGS</span>
+            <span>Version 1.0.0</span>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN SETTINGS CONTENT
+    ========================== -->
+
+    <main class="settings-container">
+
+        <!-- HEADER -->
+
+        <header class="settings-header">
+
+            <div>
+                <p class="settings-eyebrow">PERSONALIZATION</p>
+                <h1>Settings</h1>
+                <p class="settings-subtitle">
+                    Customize your Void browser experience.
+                </p>
+            </div>
+
+            <a href="../Home/newtab.html" class="home-button">
+                ← Back to Home
+            </a>
+
+        </header>
+
+
+        <!-- =========================
+             APPEARANCE SECTION
+        ========================== -->
+
+        <section id="appearance" class="settings-section">
+
+            <div class="section-heading">
+                <h2>Appearance</h2>
+                <p>Control how Void looks and behaves.</p>
+            </div>
+
+
+            <!-- BACKGROUND SETTINGS CARD -->
+
+            <div class="settings-card">
+
+                <div class="card-heading">
+                    <div>
+                        <h2>Background Settings</h2>
+                        <p>
+                            Manage the images displayed on your New Tab page.
+                        </p>
+                    </div>
+
+                    <span class="card-icon">▧</span>
+                </div>
+
+
+                <!-- UPLOAD BACKGROUNDS -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Upload Backgrounds</h3>
+                        <p>
+                            Add images from your device to your Void background library.
+                        </p>
+                    </div>
+
+                    <div class="setting-control">
+
+                        <label
+                            for="backgroundUpload"
+                            class="upload-button"
+                        >
+                            + Upload Images
+                        </label>
+
+                        <input
+                            type="file"
+                            id="backgroundUpload"
+                            accept="image/*"
+                            multiple
+                            hidden
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="setting-divider"></div>
+
+
+                <!-- BACKGROUND MODE -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Background Mode</h3>
+                        <p>
+                            Choose between automatically changing images or one permanent image.
+                        </p>
+                    </div>
+
+                    <div class="setting-control">
+
+                        <select id="backgroundMode">
+
+                            <option value="random">
+                                Random Slideshow
+                            </option>
+
+                            <option value="fixed">
+                                Fixed Background
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setting-divider"></div>
+
+
+                <!-- FIXED BACKGROUND SELECTION -->
+
+                <div class="setting-row" id="fixedBackgroundRow">
+
+                    <div class="setting-info">
+                        <h3>Choose Fixed Background</h3>
+                        <p>
+                            Select which uploaded image stays on your New Tab page.
+                        </p>
+                    </div>
+
+                    <div class="setting-control">
+
+                        <select id="fixedBackground">
+
+                            <option value="">
+                                Select a background
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setting-divider"></div>
+
+
+                <!-- SLIDESHOW SPEED -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+                        <h3>Slideshow Speed</h3>
+                        <p>
+                            Set how long each background stays on screen.
+                        </p>
+                    </div>
+
+                    <div class="setting-control speed-control">
+
+                        <input
+                            type="range"
+                            id="speedSlider"
+                            min="3"
+                            max="60"
+                            value="10"
+                        >
+
+                        <span id="speedValue">
+                            10 seconds
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setting-divider"></div>
+
+
+                <!-- BACKGROUND GALLERY -->
+
+                <div class="background-gallery-section">
+
+                    <div class="gallery-heading">
+
+                        <div>
+                            <h3>Your Backgrounds</h3>
+                            <p>
+                                View and manage your uploaded images.
+                            </p>
+                        </div>
+
+                        <span id="backgroundCount">
+                            0 images
+                        </span>
+
+                    </div>
+
+
+                    <!-- JAVASCRIPT INSERTS IMAGES HERE -->
+
+                    <div id="backgroundList" class="background-list">
+
+                        <div class="empty-background-message">
+                            <span class="empty-icon">▧</span>
+
+                            <h3>No backgrounds yet</h3>
+
+                            <p>
+                                Upload an image to get started.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TAB ICON AND MIDDLE IMAGE
+        ========================== -->
+
+        <section class="settings-section">
+            <div class="section-heading">
+                <h2>New Tab Images</h2>
+                <p>Choose the icon shown in the browser tab and the image displayed in the middle of your New Tab page.</p>
+            </div>
+
+            <div class="settings-card">
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <h3>Browser Tab Icon (Favicon)</h3>
+                        <p>Choose an image for the Void tab icon. This is separate from your website shortcut icons.</p>
+                        <img id="faviconPreview" class="void-image-preview favicon-preview" src="../defaltIcons/defaltIcon.png" alt="Current tab icon">
+                    </div>
+                    <div class="setting-control image-setting-control">
+                        <input type="file" id="faviconUpload" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+                        <button type="button" id="resetFavicon" class="upload-button">Use Default Icon</button>
+                    </div>
+                </div>
+
+                <div class="setting-divider"></div>
+
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <h3>Middle Image</h3>
+                        <p>Choose any image or GIF for the center of your New Tab page. Animated GIFs remain animated.
+                           recommended to remove the background.</p>
+                        <img id="middleImagePreview" class="void-image-preview middle-image-preview" src="../defaltIcons/defaltMidIcon.gif" alt="Current middle image">
+                    </div>
+                    <div class="setting-control image-setting-control">
+                        <input type="file" id="middleImageUpload" accept="image/*">
+                        <button type="button" id="resetMiddleImage" class="upload-button">Use Default Image</button>
+                    </div>
+                </div>
+
+                <div class="setting-divider"></div>
+
+                <div class="settings-audio">
+    <div class="setting-row">
+        <div class="setting-info">
+            <h3>New Tab Audio</h3>
+            <p>
+                Choose background music or sound to play on your New Tab page.
+                Select None to disable audio.
+            </p>
+        </div>
+
+        <div class="setting-control audio-setting-control">
+            <label for="audioSelect">Audio Selection</label>
+            <select id="audioSelect">
+                <option value="none" selected>None (No Audio)</option>
+                <option value="default">Default Audio</option>
+                <option value="custom">Custom Upload</option>
+            </select>
+
+            <input
+                type="file"
+                id="audioUpload"
+                accept="audio/*"
+                style="display: none;"
+            >
+        </div>
+    </div>
+
+    <div class="setting-row">
+        <div class="setting-info">
+            <h3>Audio Preview</h3>
+            <p>Preview your selected audio.</p>
+        </div>
+
+        <div class="setting-control audio-setting-control">
+            <audio id="audioPreview" controls preload="none" style="display: none;"></audio>
+            <button type="button" id="resetAudio" class="upload-button">
+                Disable Audio
+            </button>
+        </div>
+    </div>
+</div>
+            </div>
+        </section>
+
+
+        <!-- =========================
+             ABOUT SECTION
+        ========================== -->
+
+        <section class="settings-section">
+
+            <div class="section-heading">
+                <h2>About Void</h2>
+                <p>Information about your browser customization.</p>
+            </div>
+
+            <div class="settings-card about-card">
+
+                <div class="about-brand">
+                    <span class="about-logo">◈</span>
+
+                    <div>
+                        <h2>Void</h2>
+                        <p>Your browser. Your space.</p>
+                    </div>
+                </div>
+
+                <div class="about-details">
+
+                    <div class="about-detail-row">
+                        <span>Version</span>
+                        <span id = "Version"></span>
+                    </div>
+
+                    <div class="about-detail-row">
+                        <span>Platform</span>
+                        <span>Chromium</span>
+                    </div>
+
+                    <div class="about-detail-row">
+                        <span>Project</span>
+                        <span>Void Browser</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="settings.js"></script>
+
+</body>
+</html>
